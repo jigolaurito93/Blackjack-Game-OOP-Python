@@ -18,10 +18,31 @@ def shuffle():
     random.shuffle(deck)
 
 # Create a function that removes the last item on the deck (array) to deal the cards
-def deal():
-    random_card = deck.pop()
-    return random_card
+# Given the parameter, loop through how many times the card has to be dealt
+def deal(number):
+    cards_dealt = []
+    for i in range(number):
+        random_card = deck.pop()
+        cards_dealt.append(random_card)
+    return cards_dealt
 
+# Call shuffle function
 shuffle()
-random_card = deal()
-print(f"Your card is: {random_card[0]} of {random_card[1]}")
+
+cards_dealt = deal(2)
+card = cards_dealt[0]
+rank = card[0]
+
+
+# Conditional statement to determine the value of each card
+if rank == "A":
+    value = 11
+elif rank == "J" or rank == "Q" or rank == "K":
+    value = 10
+else:
+    value = int(rank)
+
+rank_dict = {"rank": rank, "value": value}
+print(rank_dict)
+
+# print(f"Your card is: {random_card[0]} of {random_card[1]}")
