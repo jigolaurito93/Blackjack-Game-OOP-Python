@@ -32,5 +32,20 @@ class Deck: #Creates a deck of cards
             deck_comp += '\n' + card.__str__()
         return f"The deck has: {deck_comp}"
     
-    def shuffle(self):
-        
+    def shuffle(self): #Shuffle all the cards in the deck
+        random.shuffle(self.deck)
+
+    def deal(self): #Pick out a card from the deck
+        single_card = self.deck.pop()
+        return single_card
+
+class Hand: #Show all the cards that the dealer and player has
+
+    def __init__(self):
+        self.cards = []
+        self.value = 0
+        self.aces = 0 #Keep track of aces
+    
+    def add_card(self, card): # Add a card to the player's or dealer's hand
+        self.cards.append(card)
+        self.value += values[card.rank]
