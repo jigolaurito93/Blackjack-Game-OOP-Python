@@ -1,17 +1,27 @@
 import random
 
+# Empty Deck
 deck = []
-# Array of Numbers
-ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K']
+# Array of Ranks
+ranks = ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", 'J', 'Q', 'K']
 # Array of Suits
 suits = ['Hearts', 'Clubs', 'Spades', 'Diamonds']
 
+# For loop to generate random card
+for rank in ranks:
+    for suit in suits:
+        deck.append([rank, suit])
 
-# Dealers Hand
 
-for i in ranks:
-    for j in suits:
-        deck.append([i,j])
+# Create function to shuffle the deck
+def shuffle():
+    random.shuffle(deck)
 
-rand_card = random.choice(deck)
-print(f"Your card is: {rand_card[0]} of {rand_card[1]}")
+# Create a function that removes the last item on the deck (array) to deal the cards
+def deal():
+    random_card = deck.pop()
+    return random_card
+
+shuffle()
+random_card = deal()
+print(f"Your card is: {random_card[0]} of {random_card[1]}")
